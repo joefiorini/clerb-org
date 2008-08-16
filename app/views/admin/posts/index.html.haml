@@ -1,8 +1,11 @@
-%ol
-  - @posts.each do |post|
+%ol#article-listing
+  - @posts.each do |key, value|
     %li
-      = format_date_short(post.created_at)
-      &ndash;
-      = link_to post.title, post_url(post)
-      = link_to '[edit]', edit_post_url(post)
-      = link_to '[delete]', post_url(post), :method => :delete, :confirm => "Are you sure you want to delete this post?"
+      %p.date
+        = key.to_s :short_date_only
+      - value.each do |post|
+        %p
+          .tools
+            = link_to '[edit]', edit_post_url(post), :class => "icon edit", :title => 'Edit'
+            = link_to '[delete]', post_url(post), :method => :delete, :confirm => "Are you sure you want to delete this post?", :class => "icon delete", :title => 'Delete'
+          .title= link_to post.title, post_url(post)
