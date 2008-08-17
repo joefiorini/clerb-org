@@ -29,7 +29,7 @@ class PostsController < ResourceController::Base
           if request.request_uri.downcase =~ /home/
             render :html => @posts
           else
-            render :template => 'admin/posts/index', :html => @posts
+            render :template => 'admin/posts/index', :html => @posts, :layout => "admin"
           end
       end
     end

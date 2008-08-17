@@ -98,24 +98,6 @@ div.comment-form p textarea{width:417px;}
 a, a:link, a:visited, a:active { color: #900; font-family: helvetica;  }
 a:hover { color: #908a8a; }
 
-/*********** Admin Experience ***********/
-div.login { margin: 100px auto; border: solid 5px #666; background-color: #ddd; width: 400px; padding: 80px 10px; }
-div.login label { color: #FF6B10; font-weight: bold;}
-.openid-login { background: #eee url(/images/openid-logo.gif) no-repeat; padding-left: 18px; border: solid 3px #444; }
-div.login p { padding-left: 60px;}
-div.login p em { color: #444; font-style: italic; font-family: Times; font-size: 1em; }
-
-div#welcome_message { margin: 10px 6px; font-family: Helvetica; font-size: .75em; color: #999; text-align: right; }
-div#welcome_message em { color: #444; font-weight: bold; }
-
-ol#article-listing { width: 700px; }
-ol#article-listing li { margin: 35px 0px;}
-ol#article-listing li p { margin: 5px 0px;}
-ol#article-listing p.date { width: 100px; border-bottom: solid thin #444;}
-ol#article-listing a.edit { background-image: url(/images/icons/reply.png); float: left; }
-ol#article-listing a.delete { background-image: url(/images/icons/action_delete.png); float: left; }
-ol#article-listing div.tools { float: left; padding-top: 4px; margin-right: 10px; }
-
 /*********** Footer ***********/
 div#footer { margin-top: 40px; }
 

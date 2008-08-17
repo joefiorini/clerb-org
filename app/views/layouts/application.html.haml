@@ -7,6 +7,7 @@
     %meta{ :name => "author", :content => "Joe Fiorini" }/
     %link{ :href => "/stylesheets/reset.css", :rel => "stylesheet", :type => "text/css" }/
     %link{ :href => "/stylesheets/site.css", :rel => "stylesheet", :type => "text/css" }/
+    %link{ :href => "/stylesheets/admin.css", :rel => "stylesheet", :type => "text/css" }/
     - if @map
       = GMap.header
   %body
@@ -33,6 +34,12 @@
               =link_to 'Contact', '/contact'
             %li
               =link_to 'Resources', '/resources'
+        #admin-navigation
+          %ul
+            %li= link_to 'Overview', '/'
+            %li= link_to 'Posts', posts_path
+            %li= 
+            
       #main
         #page-content
           = yield
