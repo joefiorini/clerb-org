@@ -12,3 +12,5 @@ joe
 tmp/*
 *.tmproj
 twitter_creds
+swp*
+*.swp
