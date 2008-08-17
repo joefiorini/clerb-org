@@ -9,22 +9,13 @@ class ApplicationController < ActionController::Base
 		false
 	end
 
-  protected
-    def for_admin_only
-      unless @current_user
-        redirect_to(root_url) 
-      else
-        yield
-      end
+  def for_users_by_type
+    if @current_user
+      yield :admin 
+    else
+      yield :anonymous
     end
-    
-    def for_users_by_type
-      if @current_user
-        yield :admin 
-      else
-        yield :anonymous
-      end
-    end
+  end
 
   private
     def retrieve_user

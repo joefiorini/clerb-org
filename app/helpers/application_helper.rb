@@ -8,6 +8,23 @@ module ApplicationHelper
     date.to_s(:short_date_only)
   end
 
+  def for_admin_only
+    unless @current_user
+      redirect_to(root_url) 
+    else
+      yield
+    end
+  end
+    
+  def for_users_by_type
+    if @current_user
+      yield :admin 
+    else
+      yield :anonymous
+    end
+  end
+
+
 	def feedburner_link_tag(burned_name)
 		auto_discovery_link_tag :rss, "http://feeds.feedburner.com/#{burned_name.to_s}", :title => 'faithfulgeek.org in syndication'
 	end
