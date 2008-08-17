@@ -7,7 +7,6 @@
     %meta{ :name => "author", :content => "Joe Fiorini" }/
     %link{ :href => "/stylesheets/reset.css", :rel => "stylesheet", :type => "text/css" }/
     %link{ :href => "/stylesheets/site.css", :rel => "stylesheet", :type => "text/css" }/
-    %link{ :href => "/stylesheets/admin.css", :rel => "stylesheet", :type => "text/css" }/
     - if @map
       = GMap.header
   %body
@@ -17,11 +16,6 @@
           %a{ :href => "/" }
             %span
               CleRB : The Cleveland Ruby Brigade / Northeast Ohio Ruby Users Group
-      - if @current_user
-        #welcome_message
-          %em= @current_user.name
-          |
-          = link_to 'Logout', logout_url
         #navigation
           %ul
             %li.home
@@ -34,12 +28,6 @@
               =link_to 'Contact', '/contact'
             %li
               =link_to 'Resources', '/resources'
-        #admin-navigation
-          %ul
-            %li= link_to 'Overview', '/'
-            %li= link_to 'Posts', posts_path
-            %li= 
-            
       #main
         #page-content
           = yield
