@@ -2,28 +2,18 @@ class PostsController < ResourceController::Base
 	alias r_c_generated_object object
 
   new_action.wants.html do
-    for_admin_only do
-      render :html => @posts
-    end
+    render_for_admin :html => @posts
   end
   
 	index.wants.atom
 
   index.wants.html do
     @sticky = Post.sticky
-		Twitter::Status.logger = logger
-		begin
-			if tweets_enabled
-				@tweets = Twitter::Status.user_timeline
-			end
-		rescue
-			@tweets = nil
-			logger.error "Error receiving recent tweets: #{$!}"
-		end
-		
-    for_users_by_type do |type|
+    
+    for_user_by_type do |type|
       case type
         when :anonymous
+        when :user
           render :html => @posts
         when :admin
           if request.request_uri.downcase =~ /home/
@@ -69,10 +59,14 @@ class PostsController < ResourceController::Base
   def load_collection
 		if params[:tag]
 			@posts = Post.find_tagged_with params[:tag]
-		elsif @current_user
-		  @posts = Post.posts_per_date
 		else
-      @posts = Post.not_sticky.all  :limit => 10, :order => "created_at desc"
+      for_user_by_type do |type|
+        if type == :admin
+		      @posts = Post.posts_per_date
+        else
+          @posts = Post.not_sticky.all  :limit => 10, :order => "created_at desc"
+        end
+      end
 		end
   end
 

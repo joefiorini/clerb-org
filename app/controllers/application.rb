@@ -9,17 +9,9 @@ class ApplicationController < ActionController::Base
 		false
 	end
 
-  def for_users_by_type
-    if @current_user
-      yield :admin 
-    else
-      yield :anonymous
-    end
-  end
-
   private
     def retrieve_user
-      @current_user = User.find(session[:user_id]) if session[:user_id]
+      User.current_user = User.find(session[:user_id]) if session[:user_id]
     end
     
   # See ActionController::RequestForgeryProtection for details
