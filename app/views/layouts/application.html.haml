@@ -12,10 +12,6 @@
   %body
     #container
       #mast
-        - if @current_user
-          #welcome_message
-            = "Logged in as: " + @current_user.name
-            = link_to 'Logout', logout_url
         #logo
           %a{ :href => "/" }
             %span

@@ -47,7 +47,6 @@ div#navigation
 
 strong.chicklet { 
 	background-color: #b4130a; 
-/*	border: solid 1px black; */
 	color: white; 
 	font-size: .8em; 
 	text-transform: uppercase; 
@@ -83,6 +82,8 @@ div#map_div { border: solid 1px black;}
 #location h1 { font-size: 2.25em; }
 #location div#address { text-indent: 40px; }
 
+a.icon { display: block; width: 16px; height: 16px; text-indent: -1000px; }
+
 /*********** Comment Form **********/
 
 /* this is the honeypot captcha to catch spam bots */
@@ -99,3 +100,4 @@ a:hover { color: #908a8a; }
 
 /*********** Footer ***********/
 div#footer { margin-top: 40px; }
+

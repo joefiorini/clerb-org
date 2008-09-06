@@ -29,7 +29,7 @@ class PostsController < ResourceController::Base
           if request.request_uri.downcase =~ /home/
             render :html => @posts
           else
-            render :template => 'admin/posts/index', :html => @posts
+            render :template => 'admin/posts/index', :html => @posts, :layout => "admin"
           end
       end
     end
@@ -69,6 +69,8 @@ class PostsController < ResourceController::Base
   def load_collection
 		if params[:tag]
 			@posts = Post.find_tagged_with params[:tag]
+		elsif @current_user
+		  @posts = Post.posts_per_date
 		else
       @posts = Post.not_sticky.all  :limit => 10, :order => "created_at desc"
 		end
