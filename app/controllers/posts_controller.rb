@@ -11,16 +11,7 @@ class PostsController < ResourceController::Base
 
   index.wants.html do
     @sticky = Post.sticky
-		Twitter::Status.logger = logger
-		begin
-			if tweets_enabled
-				@tweets = Twitter::Status.user_timeline
-			end
-		rescue
-			@tweets = nil
-			logger.error "Error receiving recent tweets: #{$!}"
-		end
-		
+    
     for_users_by_type do |type|
       case type
         when :anonymous

@@ -1,0 +1,61 @@
+h1. AuthY
+
+h3. An authorization mini-DSL written as a plugin for Ruby on Rails from your friends at densitypop.
+
+h2. Usage
+
+AuthY currently contains 3 methods:
+
+h3. for_admin_only
+
+This method takes a block of code and executes it only for users with admin priveleges. Admin priveleges are determined by a method called admin? on your user model.  For example:
+
+	class User < ActiveRecord::Base
+	  def admin?
+	    attributes[:admin]
+	  end
+	end
+
+An example of using this method:
+
+	<% for_admin_only do %>
+	  <%= link_to admin_posts_path, "admin" %>
+	<% end %>
+
+This method is accessible from any controller or view.  It also returns a boolean indicating admin status, such as:
+
+	admin = for_admin_only do
+	  User.save
+	end
+	
+	flash[:message] = "Insufficient priveleges" if not admin
+
+h3. for_user_by_type
+
+This method takes a block of code using a parameter indicating the role of the current user.  At this time the plugin supports three roles:
+
+	# :admin
+	# :user
+	# :anonymous
+
+This is currently determined by the existence of a current_user on your User model.  If current_user is nil, :anonymous is assumed.  If current_user is not nil and admin? returns true, it assumes :admin.  Otherwise, it uses :user.
+
+	<% for_user_by_type do |type| %>
+	  <% if type == :user %>
+	    <%= link_to logout_path, "logout" %>
+	  <% end %>
+	<% end %>
+
+h3. render_for_admin
+
+This method is used to render a view from a controller.  If the user is an admin, the render completes successfully.  If the user is not an admin, the system renders nothing and returns a status code of 401.  This may change going forward to render an error page, as I learn more about how error pages like this work.
+
+	class PostsController
+	  def new
+	    render_for_admin :html => @posts
+	  end
+  end
+
+h3. Credits
+
+This plugin is under constant development by Joe Fiorini at densitypop.  Thanks to "Corey Haines":http://www.coreyhaines.com for help putting this together.

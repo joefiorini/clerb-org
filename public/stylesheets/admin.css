@@ -1,0 +1,51 @@
+/*********** Layout ***********/
+#container { width: 100%; }
+div#mast { width: 100%; background-color: #f6f3c2; height: 30px; padding-top: 1px; border-bottom: solid thin black; }
+#logo { background-image: url(/images/admin_logo.png); width: 118px; height: 27px; }
+div#logo a { display: block; height: 100%; width: 100%; }
+div#logo a span { margin-left: -9999px; }
+div#navigation
+{
+  display: inline;
+  position: absolute;
+  overflow: hidden;
+  right: 0px;
+  top: -3px;
+}
+
+#navigation ul { float: left; margin-bottom: 3px; list-style-type: none; }
+#navigation li { float: left; padding-right: 10px; height: 40px; line-height: 45px;  }
+#navigation li a { color: black; font-weight: bold; font-family: helvetica; }
+#navigation li a:hover { text-decoration: none; }
+
+div#page-content { margin-left: 100px; }
+
+/*********** Layout ***********/
+h1 { font-size: 2.25em; font-weight: bold; font-family: Helvetica; }
+
+/*********** Admin Experience ***********/
+div.login { margin: 100px auto; border: solid 5px #666; background-color: #ddd; width: 400px; padding: 80px 10px; }
+div.login label { color: #FF6B10; font-weight: bold;}
+.openid-login { background: #eee url(/images/openid-logo.gif) no-repeat; padding-left: 18px; border: solid 3px #444; }
+div.login p { padding-left: 60px;}
+div.login p em { color: #444; font-style: italic; font-family: Times; font-size: 1em; }
+
+a.icon { display: block; width: 16px; height: 16px; text-indent: -1000px; }
+div#welcome_message { margin: 10px 6px; font-family: Helvetica; font-size: .75em; color: #999; text-align: right; }
+div#welcome_message em { color: #444; font-weight: bold; }
+
+#listing { float: left; }
+
+ol#article-listing { width: 700px; }
+ol#article-listing li { margin: 35px 0px;}
+ol#article-listing li p { margin: 5px 0px;}
+ol#article-listing p.date { width: 100px; border-bottom: solid thin #444;}
+ol#article-listing a.edit { background-image: url(/images/icons/reply.png); float: left; }
+ol#article-listing a.delete { background-image: url(/images/icons/action_delete.png); float: left; }
+ol#article-listing div.tools { float: left; padding-top: 4px; margin-right: 10px; }
+
+#creation-tools { float: left; } 
+#creation-tools a.add-new-post { background-image: url(/images/add_new_article.png); height: 33px; width: 204px; margin-bottom: 35px; }
+#creation-tools a.add-new-event { background-image: url(/images/add_new_event.png); height: 33px; width: 204px; margin-bottom: 35px; }
+#creation-tools a.add-new-location { background-image: url(/images/add_new_location.png); height: 33px; width: 204px; } 
+
