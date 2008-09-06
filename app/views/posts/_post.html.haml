@@ -12,7 +12,7 @@
         %em 
           = event.start_time.to_s :long_ordinal_12hour
         at
-        = link_to event.location.name, location_url(event.location)
+        = link_to event.location.name, p_location_url(:permalink => event.location.permalink)
   - unless event.type
     .post-meta
       = event.created_at.to_s :short_date_only

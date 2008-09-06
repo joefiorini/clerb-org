@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :locations
+  map.p_location 'locations/:permalink', :controller => 'locations', :action => 'view'
   map.resources :events
   
   map.root :controller => 'posts'
