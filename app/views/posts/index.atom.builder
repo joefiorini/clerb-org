@@ -1,4 +1,4 @@
-atom_feed(:url => post_url(:atom)) do |feed|
+atom_feed(:url => formatted_posts_url(:atom)) do |feed|
   feed.title("faithfulgeek.org // agile web development")
   feed.updated(@posts.first ? @posts.first.created_at : Time.now.utc)
 
