@@ -56,6 +56,9 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
+  
+  config.gem 'haml'
+  config.gem 'ruby-openid'
 end
 
 require "#{File.expand_path(RAILS_ROOT)}/lib/string"
