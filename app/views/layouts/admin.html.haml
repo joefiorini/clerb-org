@@ -14,16 +14,16 @@
           %a{ :href => "/" }
             %span
               clerb : the cleveland ruby brigade / northeast ohio ruby users group
-      - for_admin_only do
         #navigation
           %ul
             %li= link_to 'overview', '/'
             %li= link_to 'posts', posts_path
             %li= link_to 'events', events_path 
-        #welcome_message
-          %em= @current_user.name
-          |
-          = link_to 'logout', logout_url
+        - if User.current_user
+          #welcome_message
+            %em= User.current_user.name
+            |
+            = link_to 'logout', logout_url
       #main
         #page-content
           = yield

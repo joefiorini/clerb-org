@@ -4,7 +4,7 @@
     - @posts.each do |key, value|
       %li
         %p.date
-          = key.to_s :short_date_only
+          = key.to_s :short_date_only if key
         - value.each do |post|
           %p
             .tools

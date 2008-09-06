@@ -13,3 +13,6 @@
 [submodule "vendor/plugins/awesome_fields"]
 	path = vendor/plugins/awesome_fields
 	url = git://github.com/Shadowfiend/awesome_fields.git
+[submodule "auth_y"]
+	path = auth_y
+	url = vendor/plugins/auth_y/
