@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 require File.dirname(__FILE__) + '/../config/boot'
+`chmod 775 #{RAILS_ROOT/tmp}`
 `touch #{RAILS_ROOT}/tmp/restart.txt`
