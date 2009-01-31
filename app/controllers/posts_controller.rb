@@ -46,11 +46,7 @@ class PostsController < ResourceController::Base
 
   def object
     if params[:id]
-<<<<<<< HEAD:app/controllers/posts_controller.rb
-      my_object = Post.find params[:id]
-=======
       my_object = Post.find_by_permalink params[:id]
->>>>>>> homepage-display:app/controllers/posts_controller.rb
     elsif params[:action] != 'create'
       my_object = Post.new
     else
