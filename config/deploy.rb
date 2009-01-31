@@ -3,7 +3,7 @@ set :repository,  "git://git.densitypop.net/clerb.git"
 set :scm, :git
 set :git_enable_submodules, 1
 set :spinner_user, nil
-set :runner, 'deployer'
+set :runner, 'joe'
 
 # If you aren't deploying to /u/apps/#{application} on the target
 # servers (which is the default), you can specify the actual location
