@@ -1,15 +1,15 @@
 class PostsController < ResourceController::Base
-	alias r_c_generated_object object
+  alias r_c_generated_object object
 
   new_action.wants.html do
     render_for_admin :html => @posts
   end
-  
-	index.wants.atom
+
+  index.wants.atom
 
   index.wants.html do
     @sticky = Post.sticky
-    
+
     for_user_by_type do |type|
       case type
         when :anonymous
@@ -25,16 +25,16 @@ class PostsController < ResourceController::Base
     end
   end
 
-	create.before { @post.author = @current_user }
-	create.after { logger.info "MY OBJECT: #{@post} AND IT'S ATTRIBUTES: #{@post.attributes}" }
+  create.before { @post.author = @current_user }
+  create.after { logger.info "MY OBJECT: #{@post} AND IT'S ATTRIBUTES: #{@post.attributes}" }
 
-	show.wants.html do
-		if params[:day] and params[:month] and params[:year]
-			ex = "#{params[:month]}/#{params[:day]}/#{params[:year]}"
-		elsif params[:year]
-			ex = "Year: #{params[:year]}"
-		end
-	end
+  show.wants.html do
+    if params[:day] and params[:month] and params[:year]
+      ex = "#{params[:month]}/#{params[:day]}/#{params[:year]}"
+    elsif params[:year]
+      ex = "Year: #{params[:year]}"
+    end
+  end
 
   show.wants.xml { render :xml => @post }
   new_action.wants.xml { render :xml => @post }
@@ -46,30 +46,30 @@ class PostsController < ResourceController::Base
   protected
 
   def object
-		if params[:id]  	
-			my_object = Post.find params[:id]
-		elsif params[:action] != 'create'
-			my_object = Post.new
-		else
-			my_object = r_c_generated_object
-		end
-		my_object
+    if params[:id]
+      my_object = Post.find params[:id]
+    elsif params[:action] != 'create'
+      my_object = Post.new
+    else
+      my_object = r_c_generated_object
+    end
+    my_object
   end
 
   def load_collection
-		if params[:tag]
-			@posts = Post.find_tagged_with params[:tag]
-		elsif @current_user
-		  @posts = Post.posts_per_date
-		else
+    if params[:tag]
+      @posts = Post.find_tagged_with params[:tag]
+    elsif @current_user
+      @posts = Post.posts_per_date
+    else
       for_user_by_type do |type|
         if type == :admin
-		      @posts = Post.posts_per_date
+          @posts = Post.posts_per_date
         else
           @posts = Post.not_sticky.all  :limit => 10, :order => "created_at desc"
         end
       end
-		end
+    end
   end
 
 end

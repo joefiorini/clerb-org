@@ -1,3 +1,5 @@
+require 'rubygems'
+
 # Be sure to restart your server when you modify this file
 
 # Uncomment below to force Rails into production mode when
@@ -5,7 +7,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.2.0' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -62,13 +64,7 @@ end
 
 require "#{File.expand_path(RAILS_ROOT)}/lib/string"
 require "#{File.expand_path(RAILS_ROOT)}/lib/ActionView/base"
-require "#{File.expand_path(RAILS_ROOT)}/vendor/RedCloth-3.0.4/lib/redcloth"
 
 # Add custom date formats
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:short_date_only] = "%D"
 ActiveSupport::CoreExtensions::Time::Conversions::DATE_FORMATS[:long_ordinal_12hour] = "%B %d, %Y %I:%M%p"
-
-# RedCloth HTML WhiteList customizations
-['blockquote', 'table', 'tr', 'td'].each do |tag|
-	RedCloth::BASIC_TAGS.delete tag
-end
