@@ -26,7 +26,6 @@ class PostsController < ResourceController::Base
   end
 
   create.before { @post.author = @current_user }
-  create.after { logger.info "MY OBJECT: #{@post} AND IT'S ATTRIBUTES: #{@post.attributes}" }
 
   show.wants.html do
     if params[:day] and params[:month] and params[:year]
@@ -47,7 +46,7 @@ class PostsController < ResourceController::Base
 
   def object
     if params[:id]
-      my_object = Post.find params[:id]
+      my_object = Post.find_by_permalink params[:id]
     elsif params[:action] != 'create'
       my_object = Post.new
     else
