@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_permalink :title, :override_to_param => true
   acts_as_commentable :order => 'created_at desc', :conditions => "is_spam = 'f'"
   acts_as_taggable
-  named_scope :sticky, :conditions => ["sticky = 1 and ((type = 'Event' and start_time > ?) or type is null)", DateTime.now], :order => 'start_time desc'
+  named_scope :sticky, :conditions => "sticky = 1", :order => 'start_time desc'
   named_scope :not_sticky, :conditions => {:sticky => false}
   named_scope :published#not respecting draft status yet, :conditions => {:is_published => true, :is_published => false, :is_published => nil}
 
