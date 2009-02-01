@@ -1,5 +1,6 @@
 class PostsController < ResourceController::Base
   alias r_c_generated_object object
+  layout :layout_for_user
 
   new_action.wants.html do
     render_for_admin :html => @posts
@@ -42,7 +43,7 @@ class PostsController < ResourceController::Base
   update.wants.xml { render :xml => @post }
   destroy.wants.xml { head :ok }
 
-  protected
+protected
 
   def object
     if params[:id]
@@ -67,6 +68,17 @@ class PostsController < ResourceController::Base
         else
           @posts = Post.not_sticky.all  :limit => 10, :order => "created_at desc"
         end
+      end
+    end
+  end
+
+  def layout_for_user
+    for_user_by_type do |user_type|
+      case user_type
+        when :admin
+          "admin"
+        else
+          "posts"
       end
     end
   end
