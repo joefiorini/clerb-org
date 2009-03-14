@@ -9,7 +9,7 @@ class PostsController < ResourceController::Base
   index.wants.atom
 
   index.wants.html do
-    @sticky = Post.sticky
+    @sticky = Post.sticky unless params[:meetings]
 
     for_user_by_type do |type|
       case type
@@ -47,20 +47,23 @@ protected
 
   def object
     if params[:id]
-      my_object = Post.find_by_permalink params[:id]
+      @object ||= Post.find_by_permalink params[:id]
     elsif params[:action] != 'create'
-      my_object = Post.new
+      @object ||= Post.new
+    elsif params[:meetings]
+      @object = Post.old
     else
-      my_object = r_c_generated_object
+      @object ||= Post.all
     end
-    my_object
   end
 
-  def load_collection
+  def collection
     if params[:tag]
       @posts = Post.find_tagged_with params[:tag]
     elsif @current_user
       @posts = Post.posts_per_date
+    elsif params[:meetings]
+      @posts = Post.old :limit => 12, :order => 'start_time desc'
     else
       for_user_by_type do |type|
         if type == :admin
