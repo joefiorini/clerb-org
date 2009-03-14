@@ -1,13 +1,14 @@
 .post
   %strong.chicklet
-    = event.type || "Post"
+    = event.post_type || "Post"
   %p.info
   %h1= event.title
-  - if event.type == "Event"
+  - if event.post_type == "event"
     .event-meta
-      .presenting
-        %em Presenting
-        = event.presenter
+      - unless event.presenter.empty?
+        .presenting
+          %em Presenting
+          = event.presenter
       .date
         %em 
           = event.start_time.to_s :long_ordinal_12hour

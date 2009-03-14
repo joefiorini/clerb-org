@@ -21,7 +21,7 @@ div#navigation
 div#page-content { margin-left: 100px; }
 
 /*********** Layout ***********/
-h1 { font-size: 2.25em; font-weight: bold; font-family: Helvetica; }
+h1 { font-size: 2.25em; font-weight: bold; font-family: Helvetica; padding: 25px; }
 
 /*********** Admin Experience ***********/
 div.login { margin: 100px auto; border: solid 5px #666; background-color: #ddd; width: 400px; padding: 80px 10px; }
@@ -49,3 +49,9 @@ ol#article-listing div.tools { float: left; padding-top: 4px; margin-right: 10px
 #creation-tools a.add-new-event { background-image: url(/images/add_new_event.png); height: 33px; width: 204px; margin-bottom: 35px; }
 #creation-tools a.add-new-location { background-image: url(/images/add_new_location.png); height: 33px; width: 204px; } 
 
+#new-post-form p { padding: 15px; }
+#new-post-form p label { display: block; font-size: 16px; font-family: sans-serif; font-weight: bold; }
+#new-post-form p label.boolean { display: inline; font-weight: normal; }
+#new-post-form p .textbox_body { border-color:#848484 #DBDBDB #DBDBDB #848484; border-style: solid; border-width: 1px; padding: 3px; font-size: 24px; }
+#new-post-form p .textbox_body:hover, #new-post-form p .textbox_body:focus { background-color: #FFFFCC }
+#new-post-form p textarea.textbox_body { width: 484px; height: 200px }
