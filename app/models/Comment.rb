@@ -1,4 +1,3 @@
-require 'vendor/plugins/acts_as_commentable/lib/Comment'
 class Comment
 	has_rakismet :author => 'name',
 								:author_email => 'email',
