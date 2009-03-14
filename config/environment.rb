@@ -63,6 +63,7 @@ Rails::Initializer.run do |config|
   config.gem 'ruby-openid'
 end
 
+require 'RedCloth'
 require "#{File.expand_path(RAILS_ROOT)}/lib/string"
 require "#{File.expand_path(RAILS_ROOT)}/lib/ActionView/base"
 

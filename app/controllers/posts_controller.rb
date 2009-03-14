@@ -1,10 +1,10 @@
 class PostsController < ResourceController::Base
-  alias r_c_generated_object object
-  layout :layout_for_user
 
   new_action.wants.html do
-    render_for_admin :html => @posts
+    render_for_admin :layout => "admin"
   end
+
+  edit.wants.html { render_for_admin :layout => "admin" }
 
   index.wants.atom
 
@@ -20,7 +20,7 @@ class PostsController < ResourceController::Base
           if request.request_uri.downcase =~ /home/
             render :html => @posts
           else
-            render :template => 'admin/posts/index', :html => @posts, :layout => "admin"
+            render :template => 'admin/posts/index', :layout => "admin"
           end
       end
     end
