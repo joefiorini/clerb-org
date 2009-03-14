@@ -61,7 +61,6 @@ Rails::Initializer.run do |config|
   
   config.gem 'haml'
   config.gem 'ruby-openid'
-  config.gem 'RedCloth'
 end
 
 require "#{File.expand_path(RAILS_ROOT)}/lib/string"

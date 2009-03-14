@@ -18,7 +18,6 @@
           %ul
             %li= link_to 'overview', '/'
             %li= link_to 'posts', posts_path
-            %li= link_to 'events', events_path 
         - if User.current_user
           #welcome_message
             %em= User.current_user.name

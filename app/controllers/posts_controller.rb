@@ -78,7 +78,7 @@ protected
         when :admin
           "admin"
         else
-          "posts"
+          "application"
       end
     end
   end

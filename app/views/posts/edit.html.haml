@@ -1,8 +1,8 @@
-%h2 
+%h1
   Editing Post
   = @post.title
 
-= render_partial 'new'
+= render :partial => 'form'
 
 = link_to 'Show', @post
 |
