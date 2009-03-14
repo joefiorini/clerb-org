@@ -72,7 +72,7 @@ production:
   adapter: mysql
   username: root
   password: gr34tlakes!@
-  database: clerb.org
+  database: clerb
   host: localhost
 EOF
 
